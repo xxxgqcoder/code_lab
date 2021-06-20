@@ -1,5 +1,5 @@
-#ifndef LIB_ARRAYS_H_
-#define LIB_ARRAYS_H_
+#ifndef LIB_TEST_H_
+#define LIB_TEST_H_
 
 #include <iostream>
 #include <queue>
@@ -12,8 +12,8 @@
 using namespace std;
 
 class Solution {
-public:
-  int test();
+  public:
+    int test();
 };
 
 #endif
