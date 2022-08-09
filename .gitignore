@@ -1,4 +1,7 @@
 /bazel-*
 *.out
 *.log
+
 .vscode/
+
+.logs/**
