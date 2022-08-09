@@ -5,3 +5,5 @@
 .vscode/
 
 .logs/**
+
+**/.ipynb_checkpoints/**
