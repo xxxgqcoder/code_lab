@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-cd $(dirname "$0")
+cd $(dirname "$0")/py
 
 ps ax | grep -E "jupyter-lab" | grep -v "grep" | awk '{print $1}' | xargs -I {} kill -9 {}
 
