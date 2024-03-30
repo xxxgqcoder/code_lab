@@ -12,7 +12,8 @@ mkdir -p $(dirname ${jupyter_log_file})
 
 touch ${jupyter_log_file}
 
-nohup jupyter-lab > ${jupyter_log_file} 2>&1 &
+port_num=3456
+nohup jupyter-lab --port=${port_num}> ${jupyter_log_file} 2>&1 &
 
 echo 'jupyter-lab is running'
 
