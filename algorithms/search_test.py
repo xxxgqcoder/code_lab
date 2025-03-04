@@ -2,7 +2,9 @@ import unittest
 
 from .search import binary_search
 
+
 class SearchTest(unittest.TestCase):
+
     def test_search(self):
         # case 1: 1 elemenet list
         a = [2]
@@ -27,7 +29,6 @@ class SearchTest(unittest.TestCase):
         x = -1
         ret = binary_search(a, x)
         self.assertEqual(ret, -1)
-
 
 
 if __name__ == '__main__':
