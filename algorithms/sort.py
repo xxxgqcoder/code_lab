@@ -34,10 +34,14 @@ def quick_sort(a, left, right):
 
     i, j = left, right - 1
     while i < j:
-        while a[i] <= pivot and i < right - 1:
-            i += 1
-        while a[j] >= pivot and j > left:
-            j -= 1
+        while True:
+            i += 1  # at least move forward one step, in case a[i] = pivot
+            if a[i] >= pivot:
+                break
+        while True:
+            j -= 1  # at least move backward one step, in case a[j] = pivot
+            if a[j] <= pivot:
+                break
         if i < j:
             a[i], a[j] = a[j], a[i]
     a[i], a[right - 1] = a[right - 1], a[i]
