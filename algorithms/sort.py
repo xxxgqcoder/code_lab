@@ -34,9 +34,9 @@ def quick_sort(a, left, right):
 
     i, j = left + 1, right - 2
     while i < j:
-        while a[i] < pivot:
+        while a[i] <= pivot and i < j:
             i += 1
-        while a[j] > pivot:
+        while a[j] >= pivot and j > i:
             j -= 1
         if i < j:
             a[i], a[j] = a[j], a[i]

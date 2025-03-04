@@ -45,6 +45,12 @@ class QuickSortTest(unittest.TestCase):
         quick_sort(a, 0, len(a) - 1)
         self.assertEqual(a, [1, 2, 3, 4, 4, 5, 6, 7, 8, 9])
 
+        # case 5: all equal element
+        a = [4,4,4,4,4]
+        quick_sort(a, 0, len(a) - 1)
+        self.assertEqual(a, [4,4,4,4,4])
+
+
 
 if __name__ == '__main__':
     unittest.main()
