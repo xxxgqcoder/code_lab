@@ -13,6 +13,19 @@ def insert_sort(a):
         a[i + 1] = key
 
 
+def insert_sort_v2(a):
+    if len(a) <= 1:
+        return
+
+    for p in range(1, len(a)):
+        tmp = a[p]
+        j = p
+        while j > 0 and a[j - 1] > tmp:
+            a[j] = a[j - 1]
+            j = j - 1
+        a[j] = tmp
+
+
 def median3(a, left, right):
     center = (left + right) // 2
     if a[center] < a[left]:

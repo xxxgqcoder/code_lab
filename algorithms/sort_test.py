@@ -1,6 +1,6 @@
 import unittest
 
-from .sort import insert_sort, quick_sort, quick_sort_v2
+from .sort import insert_sort, insert_sort_v2, quick_sort, quick_sort_v2
 
 
 class SortTest(unittest.TestCase):
@@ -20,6 +20,23 @@ class SortTest(unittest.TestCase):
         a = [4, 3, 2, 1]
         insert_sort(a)
         self.assertEqual(a, [1, 2, 3, 4])
+
+    def test_insert_sort_v2(self):
+        # case 1
+        a = [2]
+        insert_sort_v2(a)
+        self.assertEqual(a, [2])
+
+        # case 2
+        a = [4, 3, 2, 1]
+        insert_sort_v2(a)
+        self.assertEqual(a, [1, 2, 3, 4])
+
+        # case 2
+        a = [4, 3, 2, 1]
+        insert_sort_v2(a)
+        self.assertEqual(a, [1, 2, 3, 4])
+        pass
 
 
 class QuickSortTest(unittest.TestCase):
