@@ -43,3 +43,23 @@ def quick_sort(a, left, right):
     a[i], a[right - 1] = a[right - 1], a[i]
     quick_sort(a, left, i - 1)
     quick_sort(a, i + 1, right)
+
+
+def partition(a, p, r):
+    x = a[r]
+    i = p - 1
+    for j in range(p, r):
+        if a[j] <= x:
+            i += 1
+            a[i], a[j] = a[j], a[i]
+    a[i + 1], a[r] = a[r], a[i + 1]
+    return i + 1
+
+
+def quick_sort_v2(a, left, right):
+    if len(a) <= 1 or left >= right:
+        return
+
+    p = partition(a, left, right)
+    quick_sort_v2(a, left, p - 1)
+    quick_sort_v2(a, p + 1, right)
