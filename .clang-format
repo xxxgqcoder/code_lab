@@ -16,7 +16,6 @@ ObjCSpaceAfterProperty: true
 ObjCBlockIndentWidth: 4
 TabWidth: 4
 UseTab: Never
-AlignOperands: true
 AllowShortBlocksOnASingleLine: true
 BreakConstructorInitializersBeforeComma: true
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
