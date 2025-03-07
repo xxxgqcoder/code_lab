@@ -38,13 +38,10 @@ def median3(a, left, right):
     return a[right - 1]
 
 
-def quick_sort(a, left, right):
-    if len(a) <= 1 or left >= right:
-        return
+def partition(a, left, right):
     pivot = median3(a, left, right)
     if right - left <= 2:
-        return
-
+        return (left + right) // 2
     i, j = left, right - 1
     while i < j:
         while True:
@@ -58,11 +55,18 @@ def quick_sort(a, left, right):
         if i < j:
             a[i], a[j] = a[j], a[i]
     a[i], a[right - 1] = a[right - 1], a[i]
+    return i
+
+
+def quick_sort(a, left, right):
+    if len(a) <= 1 or left >= right:
+        return
+    i = partition(a, left, right)
     quick_sort(a, left, i - 1)
     quick_sort(a, i + 1, right)
 
 
-def partition(a, p, r):
+def partition_v2(a, p, r):
     x = a[r]
     i = p - 1
     for j in range(p, r):
@@ -77,6 +81,6 @@ def quick_sort_v2(a, left, right):
     if len(a) <= 1 or left >= right:
         return
 
-    p = partition(a, left, right)
+    p = partition_v2(a, left, right)
     quick_sort_v2(a, left, p - 1)
     quick_sort_v2(a, p + 1, right)
