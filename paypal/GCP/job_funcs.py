@@ -3,12 +3,11 @@ def data_func(params):
     gcs_data_dir = params.get('gcs_data_dir', None)
     bq_project = params.get('bq_project', None)
     bq_dataset = params.get('bq_dataset', None)
-    
+
     # write your job code here
     import sys
     sys.path.append("dpu-latest.jar")
     from py_dpu import BigqueryManager
-
 
     query = """
         select driver_TRANS_ID
@@ -16,6 +15,9 @@ def data_func(params):
         limit 1000
     """
     bq_mgr = BigqueryManager(spark)
-    bq_mgr.store_query_to_hdfs(query, project=bq_project, dataset=bq_dataset, output_path=gcs_data_dir)
+    bq_mgr.store_query_to_hdfs(query,
+                               project=bq_project,
+                               dataset=bq_dataset,
+                               output_path=gcs_data_dir)
 
     print(f'successfully saving data to {gcs_data_dir}')

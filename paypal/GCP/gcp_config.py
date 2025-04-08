@@ -1,24 +1,44 @@
 spark_conf = {
-    "spark.executor.cores": "4",
-    "spark.driver.memory": "16g",
-    "spark.executor.instances": "16",
-    "spark.dynamicAllocation.minExecutors": "16",
-    "spark.shuffle.file.buffer": "64k",
-    "spark.reducer.maxSizeInFlight": "96m",
-    "spark.driver.maxResultSize": "8g",
-    "spark.driver.memoryOverhead": "4096",
-    "spark.executor.memoryOverhead": "4096",
-    "spark.shuffle.service.enabled": "true",
-    "spark.sql.shuffle.partitions": "1000",
-    "spark.default.parallelism": "4000",
-    "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
-    "spark.kryoserializer.buffer.max": "1024m",
-    "spark.kryo.registrationRequired": "false",
-    "spark.sql.files.ignoreCorruptFiles": "true",
-    "spark.hadoop.avro.mapred.ignore.inputs.without.extension": "false",
-    "spark.files": "gs://pypl-bkt-rsh-row-std-gds-madmen/madmen/apps/dpu/conf/log4j.properties",
-    "spark.driver.extraClassPath": "dpu-latest.jar:spark-bigquery-with-dependencies_2.11-0.23.1.jar",
-    "spark.executor.extraClassPath": "dpu-latest.jar:spark-bigquery-with-dependencies_2.11-0.23.1.jar",
+    "spark.executor.cores":
+    "4",
+    "spark.driver.memory":
+    "16g",
+    "spark.executor.instances":
+    "16",
+    "spark.dynamicAllocation.minExecutors":
+    "16",
+    "spark.shuffle.file.buffer":
+    "64k",
+    "spark.reducer.maxSizeInFlight":
+    "96m",
+    "spark.driver.maxResultSize":
+    "8g",
+    "spark.driver.memoryOverhead":
+    "4096",
+    "spark.executor.memoryOverhead":
+    "4096",
+    "spark.shuffle.service.enabled":
+    "true",
+    "spark.sql.shuffle.partitions":
+    "1000",
+    "spark.default.parallelism":
+    "4000",
+    "spark.serializer":
+    "org.apache.spark.serializer.KryoSerializer",
+    "spark.kryoserializer.buffer.max":
+    "1024m",
+    "spark.kryo.registrationRequired":
+    "false",
+    "spark.sql.files.ignoreCorruptFiles":
+    "true",
+    "spark.hadoop.avro.mapred.ignore.inputs.without.extension":
+    "false",
+    "spark.files":
+    "gs://pypl-bkt-rsh-row-std-gds-madmen/madmen/apps/dpu/conf/log4j.properties",
+    "spark.driver.extraClassPath":
+    "dpu-latest.jar:spark-bigquery-with-dependencies_2.11-0.23.1.jar",
+    "spark.executor.extraClassPath":
+    "dpu-latest.jar:spark-bigquery-with-dependencies_2.11-0.23.1.jar",
 }
 
 gcp_jars = [
@@ -55,7 +75,10 @@ def get_lib_info(module_list):
     import os
 
     lib_info = os.popen("pip freeze").read().strip().split("\n")
-    lib_dict = {lib.split("==")[0]: lib.split("==")[1] for lib in lib_info if "==" in lib}
+    lib_dict = {
+        lib.split("==")[0]: lib.split("==")[1]
+        for lib in lib_info if "==" in lib
+    }
 
     lib_list = []
 

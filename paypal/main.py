@@ -26,11 +26,12 @@ def DNN(
         regularizer = None
 
     for units in hidden_units:
-        dnn.add(tf.keras.layers.Dense(
-            units=units,
-            activation=activation,
-            kernel_initializer=tf.keras.initializers.VarianceScaling(),
-            kernel_regularizer=regularizer,
-        ))
+        dnn.add(
+            tf.keras.layers.Dense(
+                units=units,
+                activation=activation,
+                kernel_initializer=tf.keras.initializers.VarianceScaling(),
+                kernel_regularizer=regularizer,
+            ))
 
     return dnn

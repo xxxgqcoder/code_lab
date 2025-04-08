@@ -12,7 +12,9 @@ def quota_check(uri):
     from model_automation.utils.rmr import run_cmd
     row = {'uri': uri}
     try:
-        quota = run_cmd(f"hadoop fs -count -q -v {uri}", print_ret=False, get_ret=True)
+        quota = run_cmd(f"hadoop fs -count -q -v {uri}",
+                        print_ret=False,
+                        get_ret=True)
         ret = parse_quota(quota)
         row.update(ret)
     except Exception as e:
@@ -20,7 +22,6 @@ def quota_check(uri):
     return row
 
 
-    
 def quota_stats(root_dir, max_level=1, use_mp=False):
     """
     get HDFS quota stats under root_dir.
@@ -41,11 +42,10 @@ def quota_stats(root_dir, max_level=1, use_mp=False):
     import os
     import multiprocessing as mp
     from datetime import datetime
-    
+
     import pandas as pd
     from hdfs3 import HDFileSystem
     from model_automation.utils.rmr import run_cmd
-    
 
     hdfs = HDFileSystem(host='horton')
     print(f'walk {root_dir}, max level = {max_level}')
@@ -56,7 +56,7 @@ def quota_stats(root_dir, max_level=1, use_mp=False):
             continue
         check_uris.append(uri)
     print(f'total {len(check_uris)} uris to check')
-        
+
     if use_mp:
         print(f'use mp to accelerate')
         # too large pool size may cause Java OOM error
@@ -66,18 +66,18 @@ def quota_stats(root_dir, max_level=1, use_mp=False):
         rows = []
         for i, uri in enumerate(check_uris):
             rows.append(quota_check(uri))
-        
+
     now = datetime.now()
     for row in rows:
         level = len([e for e in uri.lstrip(root_dir).split('/') if len(e) > 0])
         info = hdfs.info(row['uri'])
         last_mod = datetime.fromtimestamp(int(info['last_mod']))
-        row['last_mod' ] = last_mod.strftime('%Y-%m-%d %H:%M:%S')
+        row['last_mod'] = last_mod.strftime('%Y-%m-%d %H:%M:%S')
         row['day_since_last_mod'] = (now - last_mod).days
         row['owner'] = info['owner']
         row['quota'] = int(row['FILE_COUNT'])
         row['level'] = int(level)
-    
+
     df = pd.DataFrame()
     for r in rows:
         df = df.append(r, ignore_index=True)
