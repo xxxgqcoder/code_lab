@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -e
-cd $(dirname "$0")/py
 
 jupyter_log_file='.logs/jupyter.logs'
 port_num=3456
